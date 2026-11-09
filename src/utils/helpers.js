@@ -150,3 +150,14 @@ export const isValidFileType = (file) => {
 // Max file size (10MB)
 export const MAX_FILE_SIZE = 10 * 1024 * 1024;
 
+// Resolve backend asset/attachment URLs for both local dev proxy and deployed API
+export const getAssetUrl = (url) => {
+  if (!url) return '#';
+  if (/^https?:\/\//i.test(url)) return url;
+  const rawApiUrl = import.meta.env.VITE_API_URL?.replace(/\/+$/, '');
+  const baseOrigin = rawApiUrl ? rawApiUrl.replace(/\/api$/, '') : '';
+  const normalizedPath = url.startsWith('/') ? url : `/${url}`;
+  return `${baseOrigin}${normalizedPath}`;
+};
+
+

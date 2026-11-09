@@ -15,6 +15,7 @@ import {
   timeAgo,
   isOverdue,
   hoursRemaining,
+  getAssetUrl,
 } from '../../utils/helpers';
 import toast from 'react-hot-toast';
 import {
@@ -363,7 +364,7 @@ const ComplaintDetail = () => {
               {complaint.attachments.map((file, idx) => (
                 <a
                   key={idx}
-                  href={file.url}
+                  href={getAssetUrl(file.url || file.path)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs font-medium text-blue-600 hover:text-blue-800 flex items-center space-x-1.5 transition"

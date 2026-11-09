@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatDateTime } from '../../utils/helpers';
+import { formatDateTime, getAssetUrl } from '../../utils/helpers';
 import {
   HiCheckCircle,
   HiClock,
@@ -125,7 +125,7 @@ const ComplaintTimeline = ({ history = [] }) => {
                   {item.attachments.map((att, attIdx) => (
                     <a
                       key={attIdx}
-                      href={att.url}
+                      href={getAssetUrl(att.url || att.path)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-xs text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200 hover:underline flex items-center space-x-1"
